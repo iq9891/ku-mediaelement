@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>HTML5 MediaElement</title>
+
+	<script src="../build/jquery.js"></script>
+	<script src="../build/mediaelement-and-player.min.js"></script>
+	<link rel="stylesheet" href="../build/mediaelementplayer.min.css" />
+</head>
+<body>
+
+<h2>视频</h2>
+<p>
+	ie不支持，用http://jplayer.org/latest/demo-01/
+</p>
+<!-- <audio id="playerAudio" style="display:none;" src="../media/echo-hereweare.mp4" type="audio/mp3"></audio> -->
+<audio id="playerAudio" src="../media/echo-hereweare.mp4" type="audio/mp3">
+
+</audio>
+<button type="button" name="button" id="playAudio">开始播放</button>
+<button type="button" name="button" id="pauseAudio">暂停</button>
+<script>
+var playerAudio = new MediaElementPlayer('#playerAudio',{
+});
+$('#playAudio').click(function(){
+	playerAudio.play();
+});
+$('#pauseAudio').click(function(){
+	playerAudio.pause();
+});
+
+
+</script>
+
+<h2>视频</h2>
+
+<video width="640" height="360" id="video" poster="../media/echo-hereweare.jpg" controls="controls" preload="none">
+    <source type="video/mp4" src="../media/echo-hereweare.mp4" />
+    <source type="video/webm" src="http://teletica.com/html5/videos/precious.webm" />
+
+    <object width="640" height="360" type="application/x-shockwave-flash" data="build/flashmediaelement.swf">
+        <param name="movie" value="build/flashmediaelement.swf" />
+        <param name="flashvars" value="controls=true&file=../media/echo-hereweare.mp4" />
+
+        <img src="../media/echo-hereweare.jpg" width="640" height="360" alt="Here we are" title="No video playback capabilities" />
+    </object>
+</video>
+<button type="button" name="button" id="play">开始播放</button>
+<button type="button" name="button" id="pause">暂停</button>
+<button type="button" name="button" id="volumeMax">最大音量</button>
+<button type="button" name="button" id="volumeMin">静音</button>
+<script type="text/javascript">
+	var player = new MediaElementPlayer('#video');
+	$('#play').click(function(){
+		player.play();
+	});
+	$('#pause').click(function(){
+		player.pause();
+	});
+	$('#volumeMax').click(function(){
+		player.setVolume(1);
+	});
+	$('#volumeMin').click(function(){
+		player.setVolume(0);
+	});
+
+</script>
+</body>
+</html>
